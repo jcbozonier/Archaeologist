@@ -1,3 +1,3 @@
-require 'production_configuration'
+require "production_configuration"
 
 run Sinatra::Application
