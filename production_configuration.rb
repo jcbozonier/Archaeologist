@@ -12,6 +12,10 @@ get '/about' do
   erb :about
 end
 
+get '/word_cloud' do
+  erb :word_cloud
+end
+
 get '/tweets' do
   connection_string = "flame.mongohq.com"
   mongo_connection = Mongo::Connection.new(connection_string, 27018)
