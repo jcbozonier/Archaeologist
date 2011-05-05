@@ -9,18 +9,21 @@
 <script src="/scripts/jquery.js" type="text/javascript"></script>
 <script src="/scripts/jqcloud.js" type="text/javascript"></script>
 <script language="Javascript" type="text/javascript">
-var word_list = [
-  {text: "Lorem", weight: 150},
-  {text: "Ipsum", weight: 90, url: "http://jquery.com/", title: "jQuery Rocks!"},
-  {text: "Dolor", weight: 60},
-  {text: "Sit", weight: 70},
-  {text: "Amet", weight: 50}
-  // ...other words
-];
 
+$(document).ready(function()
+{
+  $.get("/tweet_word_cloud",
+    {},
+    function(data)
+    {
+      var word_list = jQuery.map(data, function(word_pair)
+      {
+        return {"text":word_pair[0], "weight":word_pair[1]};
+      });
 
-$(document).ready(function() {
-  $("#example").jQCloud(word_list);
+      $("#example").jQCloud(word_list);
+    },
+    "json");
 });
 
 </script>
@@ -29,6 +32,6 @@ $(document).ready(function() {
 <body>
   <h1>Twitter Word Cloud</h1>
 
-  <div id="example" style="width: 550px; height: 350px; position: relative;"></div>
+  <div id="example" style="width: 550px; height: 700px; position: relative;"></div>
 </body>
 </html>
