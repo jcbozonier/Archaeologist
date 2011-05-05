@@ -42,8 +42,6 @@ get '/tweet_word_cloud' do
     histogram = create_word_histogram_from tweets
     histogram.sort_by{|pair| pair[1]}
 
-    puts "====== Histogram count #{tweets.length} ====="
-
     return histogram.take(100).to_json
   end
 
