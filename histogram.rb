@@ -37,7 +37,7 @@ def create_word_histogram_from tweets
 end
 
 def for_each_word_in text
-  non_word_characters = ['.',':', ' ', '"', '?', ',', '\'']
+  non_word_characters = ['.',':', ' ', '"', '?', ',', '\'', '!', '(', ')', '[', ']', ';']
 
   current_word = ""
 
