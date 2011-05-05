@@ -18,6 +18,20 @@ get '/word_cloud' do
   erb :word_cloud
 end
 
+get '/conversation_edges' do
+  connection_string = "flame.mongohq.com"
+  mongo_connection = Mongo::Connection.new(connection_string, 27018)
+  db = mongo_connection.db("AltNetMiner")
+  if db.authenticate("darkxanthos", "abc123!")
+    test_collection = db['AltNetSeattleDiscussions']
+    graphs = test_collection.find({}).select{|graph| graph}
+
+    return graphs.to_json
+  end
+
+  return "[]"
+end
+
 get '/tweet_word_cloud' do
   connection_string = "flame.mongohq.com"
   mongo_connection = Mongo::Connection.new(connection_string, 27018)
