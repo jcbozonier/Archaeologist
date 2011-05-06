@@ -14,6 +14,10 @@ get '/about' do
   erb :about
 end
 
+get '/conversations' do
+  erb :conversations
+end
+
 get '/word_cloud' do
   erb :word_cloud
 end
